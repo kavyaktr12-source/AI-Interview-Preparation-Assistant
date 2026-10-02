@@ -16,10 +16,11 @@ app.config["UPLOAD_FOLDER"]=UPLOAD_FOLDER
 
 def get_db():
     return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password=os.getenv("DB_PASSWORD"),
-        database="ai_interview"
+        host=os.getenv("MYSQLHOST"),
+        user=os.getenv("MYSQLUSER"),
+        password=os.getenv("MYSQLPASSWORD"),
+        database=os.getenv("MYSQLDATABASE"),
+        port=int(os.getenv("MYSQLPORT"))
     )
 
 def allowed_file(filename):
