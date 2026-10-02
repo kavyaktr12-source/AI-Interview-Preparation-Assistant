@@ -1,0 +1,6 @@
+Flask
+Flask-MySQLdb
+Werkzeug
+mysqlclient
+PyPDF2
+python-docx

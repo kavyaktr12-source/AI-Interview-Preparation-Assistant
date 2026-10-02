@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Aptitude Round | AI Interview Preparation Assistant</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/aptitude_round.css') }}">
+</head>
+<body>
+<div class="aptitude-page">
+<div class="topbar">
+<div class="brand">AI Interview Preparation Assistant</div>
+<div class="round-info">APTITUDE ROUND <span>01 / 06</span></div>
+<div class="timer" id="timer">60:00</div>
+</div>
+<div class="main-content">
+<div class="heading-area">
+<div>
+<div class="eyebrow">INTERVIEW PRACTICE</div>
+<h1>Aptitude Round</h1>
+<p class="subtitle">Solve each question carefully and select the correct answer.</p>
+</div>
+<div class="question-count" id="questionCount">Question 1 of 50</div>
+</div>
+<div class="progress" id="progress"></div>
+<div class="question-card">
+<div class="question-number" id="questionNumber">QUESTION 01</div>
+<h2 id="question"></h2>
+<div class="options" id="options"></div>
+</div>
+<div class="navigation">
+<button type="button" class="nav-btn previous" id="previousBtn">Previous</button>
+<button type="button" class="nav-btn next" id="nextBtn" disabled>Next</button>
+<button type="button" class="nav-btn submit" id="submitBtn" disabled>Submit</button>
+</div>
+</div>
+</div>
+<script src="{{ url_for('static',filename='js/aptitude_round.js') }}"></script>
+</body>
+</html>

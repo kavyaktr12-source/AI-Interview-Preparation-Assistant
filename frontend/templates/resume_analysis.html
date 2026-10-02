@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Resume Analysis | AI Interview Preparation Assistant</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/resume_analysis.css') }}">
+</head>
+<body>
+<div class="resume-page">
+<div class="topbar">
+<a href="{{ url_for('index') }}" class="brand">AI Interview Preparation Assistant</a>
+<div class="top-actions">
+<span>{{ session.get("user_name","User") }}</span>
+<a href="{{ url_for('logout') }}">Logout</a>
+</div>
+</div>
+<div class="main-content">
+<div class="page-heading">
+<div>
+<span class="eyebrow">STEP 01</span>
+<h1>Resume Analysis</h1>
+<p>Upload your resume and analyze your preparation readiness.</p>
+</div>
+<div class="status-badge">
+<span></span>
+Resume Required
+</div>
+</div>
+{% with messages=get_flashed_messages() %}
+{% if messages %}
+<div class="flash-message">{{ messages[0] }}</div>
+{% endif %}
+{% endwith %}
+<div class="content-grid">
+<div class="upload-card">
+<div class="card-icon">↑</div>
+<h2>Upload Your Resume</h2>
+<p>Upload your latest resume in PDF, DOC or DOCX format.</p>
+<form method="POST" action="{{ url_for('resume_analysis') }}" enctype="multipart/form-data" id="resumeForm">
+<label class="upload-box" for="resume">
+<div class="upload-symbol">+</div>
+<strong>Choose Resume</strong>
+<span>PDF, DOC or DOCX</span>
+<input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+</label>
+<div class="file-name" id="fileName">No file selected</div>
+<button type="submit" class="upload-btn">Upload & Analyze Resume →</button>
+</form>
+</div>
+<div class="result-card">
+<div class="result-heading">
+<div>
+<span class="eyebrow">ANALYSIS RESULT</span>
+<h2>Your Resume Score</h2>
+</div>
+{% if resume %}
+<div class="score-circle">
+<strong>{{ resume.resume_score|int }}%</strong>
+<span>Score</span>
+</div>
+{% else %}
+<div class="score-circle empty">
+<strong>--</strong>
+<span>Score</span>
+</div>
+{% endif %}
+</div>
+{% if resume %}
+<div class="resume-file">
+<span>Resume</span>
+<strong>{{ resume.file_name }}</strong>
+</div>
+{% if resume.resume_score|float >= 75 %}
+<div class="score-status">
+<div class="status-icon">✓</div>
+<div>
+<strong>Interview preparation unlocked</strong>
+<p>Your resume score is above the required 75% threshold.</p>
+</div>
+</div>
+{% else %}
+<div class="score-status">
+<div class="status-icon locked">!</div>
+<div>
+<strong>Interview preparation locked</strong>
+<p>A minimum resume score of 75% is required.</p>
+</div>
+</div>
+{% endif %}
+<div class="score-bar">
+<div class="score-fill" data-score="{{ resume.resume_score }}"></div>
+</div>
+<div class="analysis-grid">
+<div>
+<span>Skills</span>
+<strong>{{ resume.skills or "Analysis pending" }}</strong>
+</div>
+<div>
+<span>Education</span>
+<strong>{{ resume.education or "Analysis pending" }}</strong>
+</div>
+<div>
+<span>Experience</span>
+<strong>{{ resume.experience or "Analysis pending" }}</strong>
+</div>
+<div>
+<span>Projects</span>
+<strong>{{ resume.projects or "Analysis pending" }}</strong>
+</div>
+</div>
+{% else %}
+<div class="empty-result">
+<div>📄</div>
+<h3>No Resume Uploaded</h3>
+<p>Upload your resume to view the analysis result and unlock the interview rounds.</p>
+</div>
+{% endif %}
+</div>
+</div>
+<div class="next-section">
+{% if resume and resume.resume_score|float >= 75 %}
+<div class="unlock-card">
+<div>
+<span class="eyebrow">NEXT STEP</span>
+<h2>Aptitude Round is Unlocked</h2>
+<p>Your resume meets the required 75% score. You can now begin your first interview round.</p>
+</div>
+<a href="{{ url_for('aptitude_round') }}" class="start-btn">Start Aptitude Round →</a>
+</div>
+{% else %}
+<div class="unlock-card locked-card">
+<div>
+<span class="eyebrow">NEXT STEP</span>
+<h2>Aptitude Round is Locked</h2>
+<p>Achieve a resume score of at least 75% to unlock the Aptitude Round.</p>
+</div>
+<button type="button" class="start-btn locked-btn" disabled>🔒 Locked</button>
+</div>
+{% endif %}
+</div>
+</div>
+</div>
+<script src="{{ url_for('static',filename='js/resume_analysis.js') }}"></script>
+</body>
+</html>

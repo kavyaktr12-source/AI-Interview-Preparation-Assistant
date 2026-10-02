@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Register | AI Interview Preparation Assistant</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/register.css') }}">
+</head>
+<body>
+<div class="register-page">
+<div class="register-left">
+<a href="/" class="brand">
+<div class="brand-icon">AI</div>
+<div>
+<h2>AI Interview</h2>
+<p>Preparation Assistant</p>
+</div>
+</a>
+<div class="register-intro">
+<span class="intro-tag">START YOUR JOURNEY</span>
+<h1>Build Your<br><em>Interview Confidence.</em></h1>
+<p>Create your account and begin a structured interview preparation journey with AI-powered practice and personalized feedback.</p>
+<div class="benefit-list">
+<div class="benefit"><b>01</b><div><strong>Personalized Practice</strong><small>Practice based on your preparation needs.</small></div></div>
+<div class="benefit"><b>02</b><div><strong>AI Evaluation</strong><small>Get intelligent evaluation and feedback.</small></div></div>
+<div class="benefit"><b>03</b><div><strong>Track Progress</strong><small>Monitor your interview performance.</small></div></div>
+</div>
+</div>
+</div>
+<div class="register-right">
+<div class="register-card">
+<div class="mobile-brand">
+<div class="brand-icon">AI</div>
+</div>
+<div class="heading">
+<span>CREATE ACCOUNT</span>
+<h2>Get Started</h2>
+<p>Create your account to begin your interview preparation.</p>
+</div>
+<form id="registerForm" method="POST" action="/register">
+<div class="form-row">
+<div class="input-group">
+<label for="first_name">First Name</label>
+<input type="text" id="first_name" name="first_name" placeholder="First name">
+<small id="firstNameError"></small>
+</div>
+<div class="input-group">
+<label for="last_name">Last Name</label>
+<input type="text" id="last_name" name="last_name" placeholder="Last name">
+<small id="lastNameError"></small>
+</div>
+</div>
+<div class="input-group">
+<label for="email">Email Address</label>
+<input type="email" id="email" name="email" placeholder="Enter your email address">
+<small id="emailError"></small>
+</div>
+<div class="input-group">
+<label for="password">Password</label>
+<div class="password-box">
+<input type="password" id="password" name="password" placeholder="Create a password">
+<button type="button" id="togglePassword">Show</button>
+</div>
+<small id="passwordError"></small>
+</div>
+<div class="input-group">
+<label for="confirm_password">Confirm Password</label>
+<div class="password-box">
+<input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm your password">
+<button type="button" id="toggleConfirm">Show</button>
+</div>
+<small id="confirmPasswordError"></small>
+</div>
+<label class="terms">
+<input type="checkbox" id="terms" name="terms">
+<span>I agree to the terms and conditions.</span>
+</label>
+<small id="termsError"></small>
+<button type="submit" class="register-btn">Create Account <span>→</span></button>
+</form>
+<div class="login-text">
+<span>Already have an account?</span>
+<a href="{{ url_for('login') }}">Login</a>
+</div>
+<div class="secure-text">🔐 Your information is securely protected</div>
+</div>
+</div>
+</div>
+<script src="{{ url_for('static',filename='js/register.js') }}"></script>
+</body>
+</html>

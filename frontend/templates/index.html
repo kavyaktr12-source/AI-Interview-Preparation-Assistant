@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AI Interview Preparation Assistant</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+</head>
+<body>
+<header class="navbar">
+<a href="/" class="logo">AI Interview Preparation Assistant</a>
+<nav class="nav-links">
+<a href="#home" class="active">Home</a>
+<a href="#about">About</a>
+<a href="#features">Features</a>
+<a href="#how-it-works">How It Works</a>
+<a href="/login">Login</a>
+<a href="/register" class="register-nav">Register</a>
+</nav>
+</header>
+<main>
+<section class="hero" id="home">
+<div class="hero-content">
+<div class="badge">AI POWERED INTERVIEW PLATFORM</div>
+<h1>Prepare Smarter.<br><span>Interview Better.</span></h1>
+<p>Build your confidence with AI-powered interview practice, personalized feedback, resume analysis and multiple interview rounds.</p>
+<div class="hero-buttons">
+<a href="/login" class="primary-btn">Start Preparing</a>
+<a href="#features" class="secondary-btn">Explore Platform</a>
+</div>
+</div>
+<div class="hero-visual">
+<div class="visual-card">
+<div class="visual-top"><span>INTERVIEW JOURNEY</span><strong>AI</strong></div>
+<div class="hero-round-list">
+<div><b>01</b><span>Aptitude Round</span><i>✓</i></div>
+<div><b>02</b><span>Technical Round</span><i>✓</i></div>
+<div><b>03</b><span>Coding Skill</span><i>✓</i></div>
+<div><b>04</b><span>Personal Interview</span><i>✓</i></div>
+<div><b>05</b><span>HR Interview</span><i>✓</i></div>
+<div><b>06</b><span>Mock Interview</span><i>✓</i></div>
+</div>
+</div>
+</div>
+</section>
+<section class="about section" id="about">
+<div class="section-title"><span>ABOUT</span><h2>Your Personal Interview Preparation Partner</h2></div>
+<div class="about-card">
+<p>AI Interview Preparation Assistant is a web-based application developed to help students and job seekers prepare for interviews. It uses AI to provide personalized guidance, real-time feedback, and practice opportunities. The system helps users improve their communication skills, technical knowledge, and confidence through structured learning, mock interviews, and performance tracking.</p>
+</div>
+</section>
+<section class="features section" id="features">
+<div class="section-title"><span>FEATURES</span><h2>Everything You Need To Prepare</h2></div>
+<div class="feature-grid">
+<div class="feature-card"><strong>01</strong><h3>Resume Analysis</h3><p>Analyze your resume and identify important skills and experience.</p></div>
+<div class="feature-card"><strong>02</strong><h3>AI Questions</h3><p>Practice questions based on your preparation journey.</p></div>
+<div class="feature-card"><strong>03</strong><h3>Mock Interviews</h3><p>Experience structured interview practice similar to real interviews.</p></div>
+<div class="feature-card"><strong>04</strong><h3>Performance Tracking</h3><p>Track your progress and understand your interview performance.</p></div>
+</div>
+</section>
+<section class="how section" id="how-it-works">
+<div class="section-title"><span>HOW IT WORKS</span><h2>Simple. Structured. Effective.</h2></div>
+<div class="steps">
+<div><b>01</b><h3>Create Account</h3><p>Register and access your interview preparation platform.</p></div>
+<div><b>02</b><h3>Upload Resume</h3><p>Upload your resume for analysis before starting the rounds.</p></div>
+<div><b>03</b><h3>Complete Rounds</h3><p>Progress through aptitude, technical, coding, personal, HR and mock rounds.</p></div>
+<div><b>04</b><h3>Improve</h3><p>Review performance, recommendations and feedback.</p></div>
+</div>
+</section>
+<section class="cta">
+<h2>Ready To Start Your Interview Preparation?</h2>
+<a href="/login" class="primary-btn">Start Now</a>
+</section>
+</main>
+<footer><p>© 2026 AI Interview Preparation Assistant</p></footer>
+<script src="{{ url_for('static',filename='js/script.js') }}"></script>
+</body>
+</html>

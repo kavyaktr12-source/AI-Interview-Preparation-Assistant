@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Personalized Recommendations</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/personalized_recommendations.css') }}">
+</head>
+<body>
+<div class="recommendation-page">
+<header class="topbar">
+<div class="brand">AI Interview Preparation Assistant</div>
+<div class="step-info">STEP 09 / 10</div>
+</header>
+<main class="main-content">
+<div class="heading-area">
+<div>
+<p class="eyebrow">AI GUIDANCE</p>
+<h1>Personalized Recommendations</h1>
+<p class="subtitle">Improve your interview performance with focused recommendations.</p>
+</div>
+<div class="score-box">
+<span>Overall Performance</span>
+<strong id="overallScore">0%</strong>
+</div>
+</div>
+<div class="progress-track">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span class="active"></span>
+<span></span>
+</div>
+<section class="recommendation-card">
+<div class="card-heading">
+<p>RECOMMENDATION SUMMARY</p>
+<h2 id="summaryTitle">Your personalized improvement plan</h2>
+<p id="summaryText">Based on your performance, these recommendations can help you prepare more effectively.</p>
+</div>
+<div class="recommendation-list">
+<div class="recommendation-item">
+<div class="number">01</div>
+<div>
+<span class="tag">TECHNICAL</span>
+<h3 id="rec1Title">Strengthen technical concepts</h3>
+<p id="rec1Text">Revise important technical concepts and practice application-based questions.</p>
+</div>
+</div>
+<div class="recommendation-item">
+<div class="number">02</div>
+<div>
+<span class="tag">PRACTICE</span>
+<h3 id="rec2Title">Practice consistently</h3>
+<p id="rec2Text">Solve interview questions regularly to improve speed, accuracy and confidence.</p>
+</div>
+</div>
+<div class="recommendation-item">
+<div class="number">03</div>
+<div>
+<span class="tag">COMMUNICATION</span>
+<h3 id="rec3Title">Improve interview communication</h3>
+<p id="rec3Text">Practice explaining your thoughts clearly and structure your answers before responding.</p>
+</div>
+</div>
+<div class="recommendation-item">
+<div class="number">04</div>
+<div>
+<span class="tag">MOCK PRACTICE</span>
+<h3 id="rec4Title">Repeat mock interviews</h3>
+<p id="rec4Text">Use mock interviews to become comfortable with pressure and unexpected questions.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="focus-card">
+<div>
+<span class="focus-label">YOUR MAIN FOCUS AREA</span>
+<h2 id="focusTitle">Loading...</h2>
+<p id="focusText">Analyzing your performance data.</p>
+</div>
+<div class="focus-score" id="focusScore">0%</div>
+</section>
+<div class="action-area">
+<button id="continueBtn">Continue to Feedback</button>
+</div>
+</main>
+</div>
+<script src="{{ url_for('static',filename='js/personalized_recommendations.js') }}"></script>
+</body>
+</html>

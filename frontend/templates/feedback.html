@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Feedback</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/feedback.css') }}">
+</head>
+<body>
+<div class="feedback-page">
+<header class="topbar">
+<div class="brand">AI Interview Preparation Assistant</div>
+<div class="step-info">STEP 10 / 10</div>
+</header>
+<main class="main-content">
+<div class="heading-area">
+<p class="eyebrow">FINAL STEP</p>
+<h1>Feedback</h1>
+<p class="subtitle">Share your experience and help improve your interview preparation journey.</p>
+</div>
+<div class="progress-track">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span class="active"></span>
+</div>
+<section class="feedback-card">
+<div class="final-score">
+<span>YOUR OVERALL PERFORMANCE</span>
+<strong id="overallScore">0%</strong>
+</div>
+<div class="rating-section">
+<h2>How was your interview experience?</h2>
+<p>Select a rating that best describes your experience.</p>
+<div class="stars" id="stars">
+<button type="button" data-rating="1">★</button>
+<button type="button" data-rating="2">★</button>
+<button type="button" data-rating="3">★</button>
+<button type="button" data-rating="4">★</button>
+<button type="button" data-rating="5">★</button>
+</div>
+<p class="rating-text" id="ratingText">Select your rating</p>
+</div>
+<div class="input-group">
+<label for="feedbackMessage">Your Feedback</label>
+<textarea id="feedbackMessage" placeholder="Tell us about your interview preparation experience..."></textarea>
+</div>
+<div class="input-group">
+<label for="improvement">What can we improve?</label>
+<select id="improvement">
+<option value="">Select an option</option>
+<option value="questions">Interview Questions</option>
+<option value="difficulty">Question Difficulty</option>
+<option value="timing">Timer and Navigation</option>
+<option value="design">Website Design</option>
+<option value="feedback">Performance Feedback</option>
+<option value="recommendations">Recommendations</option>
+<option value="other">Other</option>
+</select>
+</div>
+<div class="button-area">
+<button id="submitFeedback">Submit Feedback</button>
+</div>
+<div class="success-message" id="successMessage">
+<h3>Feedback Submitted Successfully</h3>
+<p>Thank you for sharing your experience.</p>
+<button id="restartBtn">Start Again</button>
+</div>
+</section>
+</main>
+</div>
+<script src="{{ url_for('static',filename='js/feedback.js') }}"></script>
+</body>
+</html>
