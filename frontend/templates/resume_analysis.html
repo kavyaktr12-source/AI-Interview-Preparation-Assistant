@@ -10,22 +10,14 @@
 <div class="resume-page">
 <div class="topbar">
 <a href="{{ url_for('index') }}" class="brand">AI Interview Preparation Assistant</a>
-<div class="top-actions">
-<span>{{ session.get("user_name","User") }}</span>
-<a href="{{ url_for('logout') }}">Logout</a>
-</div>
 </div>
 <div class="main-content">
 <div class="page-heading">
 <div>
-<span class="eyebrow">STEP 01</span>
 <h1>Resume Analysis</h1>
 <p>Upload your resume and analyze your preparation readiness.</p>
 </div>
-<div class="status-badge">
-<span></span>
-Resume Required
-</div>
+<div class="status-badge"><span></span>Resume Required</div>
 </div>
 {% with messages=get_flashed_messages() %}
 {% if messages %}
@@ -92,22 +84,10 @@ Resume Required
 <div class="score-fill" data-score="{{ resume.resume_score }}"></div>
 </div>
 <div class="analysis-grid">
-<div>
-<span>Skills</span>
-<strong>{{ resume.skills or "Analysis pending" }}</strong>
-</div>
-<div>
-<span>Education</span>
-<strong>{{ resume.education or "Analysis pending" }}</strong>
-</div>
-<div>
-<span>Experience</span>
-<strong>{{ resume.experience or "Analysis pending" }}</strong>
-</div>
-<div>
-<span>Projects</span>
-<strong>{{ resume.projects or "Analysis pending" }}</strong>
-</div>
+<div><span>Skills</span><strong>{{ resume.skills or "Analysis pending" }}</strong></div>
+<div><span>Education</span><strong>{{ resume.education or "Analysis pending" }}</strong></div>
+<div><span>Experience</span><strong>{{ resume.experience or "Analysis pending" }}</strong></div>
+<div><span>Projects</span><strong>{{ resume.projects or "Analysis pending" }}</strong></div>
 </div>
 {% else %}
 <div class="empty-result">

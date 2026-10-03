@@ -5,6 +5,9 @@ import os,re
 from werkzeug.utils import secure_filename
 from pypdf import PdfReader
 from docx import Document
+from dotenv import load_dotenv
+
+load_dotenv(os.path.join(os.path.dirname(__file__),".env"))
 
 app=Flask(__name__,template_folder="../frontend/templates",static_folder="../frontend/static")
 app.secret_key="ai_interview_secret_key"
@@ -16,11 +19,11 @@ app.config["UPLOAD_FOLDER"]=UPLOAD_FOLDER
 
 def get_db():
     return mysql.connector.connect(
-        host=os.getenv("MYSQLHOST"),
-        user=os.getenv("MYSQLUSER"),
-        password=os.getenv("MYSQLPASSWORD"),
-        database=os.getenv("MYSQLDATABASE"),
-        port=int(os.getenv("MYSQLPORT"))
+        host="localhost",
+        user="root",
+        password=os.getenv("DB_PASSWORD"),
+        database="ai_interview",
+        port=3306
     )
 
 def allowed_file(filename):
@@ -63,7 +66,6 @@ def extract_resume_text(file_path):
 def analyze_resume(text):
     text=text.lower()
     text=re.sub(r"\s+"," ",text).strip()
-
     resume_sections={
         "education":["education","academic","qualification","degree","bachelor","master","university","college"],
         "skills":["skills","technical skills","programming","python","java","javascript","html","css","sql","mysql","flask","machine learning","data science"],
@@ -72,30 +74,24 @@ def analyze_resume(text):
         "profile":["objective","summary","profile","career objective","professional summary"],
         "contact":["email","phone","mobile","linkedin","github","address"]
     }
-
     scores={}
     for section,keywords in resume_sections.items():
         matches=sum(1 for keyword in keywords if keyword in text)
         scores[section]=matches
-
     bill_words=[
         "invoice","bill","gst","gstin","tax invoice","invoice number",
         "customer invoice","amount payable","subtotal","total amount",
         "quantity","unit price","product details","warranty","serial number",
         "purchase invoice","cash memo","receipt","order number"
     ]
-
     bill_matches=sum(1 for word in bill_words if word in text)
-
     resume_words=[
         "resume","curriculum vitae","career objective","professional summary",
         "education","skills","experience","projects","certification",
         "internship","work experience","technical skills","achievement",
         "qualification","languages","profile"
     ]
-
     resume_matches=sum(1 for word in resume_words if word in text)
-
     if len(text)<100:
         return {
             "valid":False,
@@ -105,7 +101,6 @@ def analyze_resume(text):
             "experience":"",
             "projects":""
         }
-
     if bill_matches>=2 and resume_matches<3:
         return {
             "valid":False,
@@ -115,9 +110,7 @@ def analyze_resume(text):
             "experience":"",
             "projects":""
         }
-
     strong_resume_score=0
-
     if scores["education"]>=1:
         strong_resume_score+=20
     if scores["skills"]>=2:
@@ -132,7 +125,6 @@ def analyze_resume(text):
         strong_resume_score+=10
     if len(text)>=500:
         strong_resume_score+=5
-
     if resume_matches<3:
         return {
             "valid":False,
@@ -142,7 +134,6 @@ def analyze_resume(text):
             "experience":"",
             "projects":""
         }
-
     return {
         "valid":True,
         "score":min(strong_resume_score,100),
@@ -235,47 +226,34 @@ def register():
 def resume_analysis():
     if "user_id" not in session:
         return redirect(url_for("login"))
-
     if request.method=="POST":
         if "resume" not in request.files:
             flash("Please select a resume file.")
             return redirect(url_for("resume_analysis"))
-
         file=request.files["resume"]
-
         if file.filename=="":
             flash("Please select a resume file.")
             return redirect(url_for("resume_analysis"))
-
         if not allowed_file(file.filename):
             flash("Please upload a PDF or DOCX resume file.")
             return redirect(url_for("resume_analysis"))
-
         filename=secure_filename(file.filename)
         user_id=session["user_id"]
-
         user_folder=os.path.join(app.config["UPLOAD_FOLDER"],str(user_id))
         os.makedirs(user_folder,exist_ok=True)
-
         file_path=os.path.join(user_folder,filename)
         file.save(file_path)
-
         text=extract_resume_text(file_path)
-
         if not text:
             if os.path.exists(file_path):
                 os.remove(file_path)
             session["resume_uploaded"]=False
             flash("Unable to read this file. Please upload a proper text-based resume.")
             return redirect(url_for("resume_analysis"))
-
         analysis=analyze_resume(text)
-
         db=get_db()
         cursor=db.cursor()
-
         cursor.execute("DELETE FROM resumes WHERE user_id=%s",(user_id,))
-
         cursor.execute(
             "INSERT INTO resumes (user_id,file_name,file_path,resume_score,skills,education,experience,projects) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)",
             (
@@ -289,11 +267,9 @@ def resume_analysis():
                 analysis["projects"]
             )
         )
-
         db.commit()
         cursor.close()
         db.close()
-
         if not analysis["valid"]:
             session["resume_uploaded"]=False
             flash("The uploaded file does not appear to be a valid resume. Please upload your resume.")
@@ -303,9 +279,7 @@ def resume_analysis():
         else:
             session["resume_uploaded"]=True
             flash("Resume analyzed successfully. Aptitude Round is unlocked.")
-
         return redirect(url_for("resume_analysis"))
-
     resume=get_resume(session["user_id"])
     return render_template("resume_analysis.html",resume=resume)
 
@@ -313,22 +287,17 @@ def resume_analysis():
 def aptitude_round():
     if "user_id" not in session:
         return redirect(url_for("login"))
-
     if not session.get("resume_uploaded",False):
         flash("Please upload your resume before starting the Aptitude Round.")
         return redirect(url_for("resume_analysis"))
-
     resume=get_resume(session["user_id"])
-
     if not resume:
         session["resume_uploaded"]=False
         flash("Please upload your resume before starting the Aptitude Round.")
         return redirect(url_for("resume_analysis"))
-
     if float(resume["resume_score"] or 0)<75:
         flash("Your resume score must be 75% or above to start the Aptitude Round.")
         return redirect(url_for("resume_analysis"))
-
     return render_template("aptitude_round.html")
 
 @app.route("/technical-round")

@@ -1,49 +1,48 @@
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{width:100%;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:#100b1c;color:#fff}
+html,body{width:100%;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:#f7f4ff;color:#282238}
 body{overflow-x:hidden}
-.feedback-page{min-height:100vh;background:radial-gradient(circle at 10% 15%,rgba(145,65,255,.17),transparent 30%),radial-gradient(circle at 90% 85%,rgba(255,72,157,.13),transparent 30%),#100b1c}
-.topbar{height:74px;padding:0 5%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.1);background:rgba(15,10,28,.92)}
-.brand{font-size:20px;font-weight:700}
-.step-info{font-size:12px;font-weight:700;letter-spacing:2px;color:#ff75b7}
-.main-content{width:90%;max-width:850px;margin:auto;padding:35px 0 50px}
-.heading-area{margin-bottom:23px}
-.eyebrow{font-size:11px;letter-spacing:2px;color:#b993ff;font-weight:700;margin-bottom:8px}
-h1{font-size:36px;margin-bottom:8px}
-.subtitle{font-size:14px;color:#aaa1b8}
-.progress-track{display:flex;gap:5px;margin-bottom:25px}
-.progress-track span{height:4px;flex:1;background:#30283b;border-radius:5px}
-.progress-track span.active{background:linear-gradient(90deg,#a96cff,#ff62ae)}
-.feedback-card{border:1px solid rgba(255,255,255,.1);border-radius:22px;background:rgba(255,255,255,.045);padding:32px}
-.final-score{text-align:center;padding:20px;border-radius:16px;background:rgba(255,255,255,.035);margin-bottom:28px}
-.final-score span{display:block;font-size:10px;color:#a9a1b8;letter-spacing:2px;margin-bottom:8px}
-.final-score strong{font-size:38px;color:#ff72b5}
-.rating-section{text-align:center;margin-bottom:28px}
-.rating-section h2{font-size:21px;margin-bottom:7px}
-.rating-section p{font-size:13px;color:#aaa1b8}
-.stars{display:flex;justify-content:center;gap:10px;margin:18px 0 8px}
-.stars button{border:0;background:transparent;color:#40374a;font-size:37px;cursor:pointer;transition:.2s}
-.stars button:hover,.stars button.active{color:#ff70b4;transform:scale(1.08)}
-.rating-text{color:#ff72b5!important;font-weight:600}
-.input-group{margin-bottom:20px}
-.input-group label{display:block;font-size:13px;font-weight:700;margin-bottom:9px;color:#e7dff0}
-textarea,select{width:100%;border:1px solid rgba(255,255,255,.11);border-radius:12px;background:#191322;color:#fff;padding:14px;font-family:Arial,Helvetica,sans-serif;font-size:13px;outline:none}
-textarea{height:125px;resize:none}
-textarea:focus,select:focus{border-color:#a96cff}
-textarea::placeholder{color:#766c82}
-select option{background:#191322;color:#fff}
-.button-area{text-align:right;margin-top:25px}
-#submitFeedback{border:0;border-radius:11px;padding:14px 28px;background:linear-gradient(90deg,#9b61f6,#e85caa);color:#fff;font-size:14px;font-weight:700;cursor:pointer}
-#submitFeedback:hover{transform:translateY(-1px)}
+.feedback-page{min-height:100vh;background:radial-gradient(circle at 8% 12%,rgba(124,58,237,.12),transparent 28%),radial-gradient(circle at 92% 84%,rgba(236,72,153,.1),transparent 28%),linear-gradient(135deg,#fbfaff,#f7f4ff 55%,#fff8fc)}
+.topbar{height:74px;padding:0 5%;display:flex;align-items:center;border-bottom:1px solid #ebe5f5;background:rgba(255,255,255,.88);backdrop-filter:blur(14px)}
+.brand{font-size:20px;font-weight:700;color:#29223b}
+.main-content{width:90%;max-width:850px;margin:auto;padding:30px 0 40px}
+.heading-area{margin-bottom:20px}
+.eyebrow{font-size:11px;letter-spacing:2px;color:#7c3aed;font-weight:700;margin-bottom:8px}
+h1{font-size:36px;margin-bottom:8px;color:#29223b}
+.subtitle{font-size:14px;color:#777087}
+.progress-track{display:flex;gap:5px;margin-bottom:20px}
+.progress-track span{height:5px;flex:1;background:#e9e3f2;border-radius:5px}
+.progress-track span.active{background:linear-gradient(90deg,#8b5cf6,#ec4899)}
+.feedback-card{border:1px solid #ebe5f4;border-radius:22px;background:rgba(255,255,255,.94);padding:30px;box-shadow:0 14px 36px rgba(73,47,105,.07)}
+.final-score{text-align:center;padding:18px;border-radius:16px;background:linear-gradient(135deg,#faf7ff,#fff6fb);border:1px solid #eee7f5;margin-bottom:25px}
+.final-score span{display:block;font-size:10px;color:#777087;letter-spacing:2px;margin-bottom:8px}
+.final-score strong{font-size:38px;color:#db3f91}
+.rating-section{text-align:center;margin-bottom:25px}
+.rating-section h2{font-size:21px;margin-bottom:7px;color:#302840}
+.rating-section p{font-size:13px;color:#777087}
+.stars{display:flex;justify-content:center;gap:10px;margin:17px 0 8px}
+.stars button{border:0;background:transparent;color:#dcd5e7;font-size:37px;cursor:pointer;transition:.2s}
+.stars button:hover,.stars button.active{color:#ec4899;transform:scale(1.08)}
+.rating-text{color:#db3f91!important;font-weight:600}
+.input-group{margin-bottom:18px}
+.input-group label{display:block;font-size:13px;font-weight:700;margin-bottom:9px;color:#393147}
+textarea,select{width:100%;border:1px solid #e5deef;border-radius:12px;background:#fff;color:#302840;padding:14px;font-family:Arial,Helvetica,sans-serif;font-size:13px;outline:none;box-shadow:0 5px 15px rgba(73,47,105,.03)}
+textarea{height:120px;resize:none}
+textarea:focus,select:focus{border-color:#9b6cf5;box-shadow:0 0 0 3px rgba(124,58,237,.08)}
+textarea::placeholder{color:#aaa2b4}
+select option{background:#fff;color:#302840}
+.button-area{text-align:right;margin-top:22px}
+#submitFeedback{border:0;border-radius:12px;padding:14px 28px;background:linear-gradient(90deg,#7c3aed,#ec4899);color:#fff;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 10px 24px rgba(124,58,237,.2)}
+#submitFeedback:hover{transform:translateY(-2px)}
 .success-message{display:none;text-align:center;padding:30px 15px}
 .success-message.show{display:block}
-.success-message h3{font-size:22px;margin-bottom:8px;color:#ff72b5}
-.success-message p{font-size:13px;color:#aaa1b8;margin-bottom:20px}
-#restartBtn{border:1px solid rgba(255,117,183,.4);background:rgba(255,255,255,.04);color:#fff;border-radius:10px;padding:12px 24px;font-weight:700;cursor:pointer}
+.success-message h3{font-size:22px;margin-bottom:8px;color:#db3f91}
+.success-message p{font-size:13px;color:#777087;margin-bottom:20px}
+#restartBtn{border:0;background:linear-gradient(90deg,#7c3aed,#ec4899);color:#fff;border-radius:11px;padding:12px 27px;font-weight:700;cursor:pointer;box-shadow:0 9px 20px rgba(124,58,237,.18)}
+#restartBtn:hover{transform:translateY(-2px)}
 @media(max-width:600px){
 .topbar{height:64px;padding:0 4%}
 .brand{font-size:15px}
-.step-info{font-size:9px}
-.main-content{width:92%;padding:25px 0}
+.main-content{width:92%;padding:23px 0}
 h1{font-size:29px}
 .feedback-card{padding:22px 17px}
 .stars{gap:3px}
